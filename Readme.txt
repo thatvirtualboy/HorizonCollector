@@ -18,3 +18,10 @@ This script gathers Horizon View Client logs. To run the script:
  e.g., 
 
     sudo ./HorizonCollector.sh
+
+### Changelog
+v1.0
+- Gathers logs and zips to directory on desktop
+
+v1.1
+- Added FTP functionality. Script prompts to upload to VMware Support Request
