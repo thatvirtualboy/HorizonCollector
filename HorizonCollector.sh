@@ -1,18 +1,46 @@
 #! /bin/bash
 #
-# HorizonCollector for Mac by Ryan Klumph
+# Horizon Collector for Mac by Ryan Klumph
 # Please report any issues to Ryan on Twitter (@thatvirtualboy)
+# www.thatvirtualboy.com
 #
 
 echo "Collecting Horizon View Logs..."
 sleep 2s
 echo "WARNING: you must run this as sudoer if you need to gather USB related logs"
-sleep 2s
+sleep 4s
 
+# Check if ThinPrint logs are needed
+echo "Are you troubleshooting a printing issue?"
+select ynn in "Yes" "No"; do
+	case $ynn in
+		Yes ) echo "Enabling print logging..."
+			mv ~/Library/Caches/vmware-view-thinprint ~/Library/Caches/vmware-view-thinprint-old &> /dev/null
+			cupsctl --debug-logging
+			sleep 2s
+			read -p "Print logging enabled! Please restart the Horizon View Client and reproduce the printing issue. Then, come back to this console and hit [ENTER]" $enter;
+			break;;
+		No ) break;; 
+	esac
+done
+
+# Set zipfile variable
 zipfile=vmware-logs-`date +%Y-%m-%d_%I.%M.%S_%p_%Z`.zip
 
-zip -r9 ~/Desktop/$zipfile ~/Library/Logs/VMware* ~/Library/Preferences/ByHost/com.microsoft.rdc.*.plist ~/Library/Preferences/com.microsoft.rdc.plist /Library/Logs/VMware* --exclude=*fusion -x=*Fusion* &> /dev/null
+# Create symlink to avoid hidden files
+ln -s ~/Library/Caches/vmware-view-thinprint/.thnuclnt-* ~/Library/Caches/vmware-view-thinprint/thnuclnt &> /dev/null
 
+# Bring home the bacon
+zip -r9 ~/Desktop/$zipfile /var/log/cups/* /.thnuclnt/*.log ~/Library/Caches/vmware-view-thinprint/thnuclnt ~/Library/Logs/VMware* ~/Library/Preferences/ByHost/com.microsoft.rdc.*.plist ~/Library/Preferences/com.microsoft.rdc.plist /Library/Logs/VMware* --exclude=*fusion -x=*Fusion* &> /dev/null
+
+# Disable debug print logging
+cupsctl --no-debug-logging
+sleep 2s
+
+echo "Done!"
+sleep 2s
+
+# FTP to VMware Support
 echo "Upload logs to existing VMware Support Request?"
 select yn in "Yes" "No"; do
     case $yn in
@@ -31,7 +59,6 @@ echo "***************************************************"
 echo "***************************************************"; exit;;
     esac
 done
-
 
 
 
