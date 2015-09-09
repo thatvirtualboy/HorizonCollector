@@ -1,4 +1,4 @@
-## HorizonCollector for Mac by Ryan Klumph
+## Horizon Collector for Mac by Ryan Klumph
 ### Please report any issues to Ryan on Twitter ([@thatvirtualboy](http://twitter.com/thatvirtualboy))
 
 
@@ -9,6 +9,7 @@ This script gathers Horizon View Client logs and has the ability to upload them 
 3. Type   
 
       ``cd ~/Desktop``
+      
       ``./HorizonCollector.sh``
 
  NOTE: If you need to gather USB logs for USB related issues, you must run the script as sudoer
@@ -18,6 +19,8 @@ This script gathers Horizon View Client logs and has the ability to upload them 
     ``sudo ./HorizonCollector.sh``
 
 ### Changelog
+
+v1.3 - Cleaned up ThinPrint logic, pulls ThinPrint versioning, and added sudo check 
 
 v1.2 - Added ThinPrint logging by enabling debug CUPS logging / Better script documentation
 
