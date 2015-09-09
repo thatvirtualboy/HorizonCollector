@@ -7,8 +7,13 @@
 
 echo "Collecting Horizon View Logs..."
 sleep 2s
-echo "WARNING: you must run this as sudoer if you need to gather USB related logs"
+
+# Check if root
+if [ "$(whoami)" != "root" ]; then
+echo "WARNING: you must run this as sudoer if you need to gather USB related logs!"
 sleep 4s
+fi 
+
 
 # Check if ThinPrint logs are needed
 echo "Are you troubleshooting a printing issue?"
@@ -19,6 +24,13 @@ select ynn in "Yes" "No"; do
 			cupsctl --debug-logging
 			sleep 2s
 			read -p "Print logging enabled! Please restart the Horizon View Client and reproduce the printing issue. Then, come back to this console and hit [ENTER]" $enter;
+			
+			# Create symlink to avoid hidden files
+			ln -s ~/Library/Caches/vmware-view-thinprint/.thnuclnt-* ~/Library/Caches/vmware-view-thinprint/thnuclnt &> /dev/null
+
+			# Grab ThinPrint versions
+			/Applications/VMware\ Horizon\ Client.app/Contents/Library/thnuclnt/thnuclnt -v > ~/Library/Caches/vmware-view-thinprint/thnuclnt/thinprint_version.txt
+			/Applications/VMware\ Horizon\ Client.app/Contents/Library/thnuclnt/thnuclnt -V >> ~/Library/Caches/vmware-view-thinprint/thnuclnt/thinprint_version.txt
 			break;;
 		No ) break;; 
 	esac
@@ -26,9 +38,6 @@ done
 
 # Set zipfile variable
 zipfile=vmware-logs-`date +%Y-%m-%d_%I.%M.%S_%p_%Z`.zip
-
-# Create symlink to avoid hidden files
-ln -s ~/Library/Caches/vmware-view-thinprint/.thnuclnt-* ~/Library/Caches/vmware-view-thinprint/thnuclnt &> /dev/null
 
 # Bring home the bacon
 zip -r9 ~/Desktop/$zipfile /var/log/cups/* /.thnuclnt/*.log ~/Library/Caches/vmware-view-thinprint/thnuclnt ~/Library/Logs/VMware* ~/Library/Preferences/ByHost/com.microsoft.rdc.*.plist ~/Library/Preferences/com.microsoft.rdc.plist /Library/Logs/VMware* --exclude=*fusion -x=*Fusion* &> /dev/null
