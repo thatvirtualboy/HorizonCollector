@@ -1,5 +1,5 @@
 ## HorizonCollector for Mac by Ryan Klumph
-## Please report any issues to Ryan on Twitter ([@thatvirtualboy](twitter.com/thatvirtualboy))
+### Please report any issues to Ryan on Twitter ([@thatvirtualboy](http://twitter.com/thatvirtualboy))
 
 
 This script gathers Horizon View Client logs. To run the script:
