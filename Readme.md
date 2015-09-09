@@ -2,7 +2,7 @@
 ### Please report any issues to Ryan on Twitter ([@thatvirtualboy](http://twitter.com/thatvirtualboy))
 
 
-This script gathers Horizon View Client logs. To run the script:
+This script gathers Horizon View Client logs and has the ability to upload them to VMware Support. To run the script:
 
 1. Copy HorizonCollector.sh to your desktop
 2. Open Terminal (Applications > Terminal)
