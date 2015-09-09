@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# Horizon Collector for Mac by Ryan Klumph
+# Horizon Collector v1.3 for Mac by Ryan Klumph
 # Please report any issues to Ryan on Twitter (@thatvirtualboy)
 # www.thatvirtualboy.com
 #
@@ -13,7 +13,6 @@ if [ "$(whoami)" != "root" ]; then
 echo "WARNING: you must run this as sudoer if you need to gather USB related logs!"
 sleep 4s
 fi 
-
 
 # Check if ThinPrint logs are needed
 echo "Are you troubleshooting a printing issue?"
@@ -44,13 +43,13 @@ zip -r9 ~/Desktop/$zipfile /var/log/cups/* /.thnuclnt/*.log ~/Library/Caches/vmw
 
 # Disable debug print logging
 cupsctl --no-debug-logging
-sleep 2s
+sleep 1s
 
 echo "Done!"
 sleep 2s
 
 # FTP to VMware Support
-echo "Upload logs to existing VMware Support Request?"
+echo "Upload logs to VMware Support Request?"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) read -p "Please type the SR Number and press [ENTER]:" SR; 
