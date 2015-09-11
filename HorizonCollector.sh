@@ -1,7 +1,8 @@
 #! /bin/bash
 #
-# Horizon Collector v1.3 for Mac by Ryan Klumph
+# Horizon Collector for Mac by Ryan Klumph
 # Please report any issues to Ryan on Twitter (@thatvirtualboy)
+# Changelog and source available at https://github.com/thatvirtualboy/horizoncollector
 # www.thatvirtualboy.com
 #
 
