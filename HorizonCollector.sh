@@ -19,6 +19,11 @@ echo "Are you troubleshooting a printing issue?"
 select ynn in "Yes" "No"; do
 	case $ynn in
 		Yes ) echo "Enabling print logging..."
+
+if [ -d ~/Library/Caches/vmware-view-thinprint-old ]
+then
+    sudo rm -r ~/Library/Caches/vmware-view-thinprint-old &> /dev/null
+fi
 			mv ~/Library/Caches/vmware-view-thinprint ~/Library/Caches/vmware-view-thinprint-old &> /dev/null
 			cupsctl --debug-logging
 			sleep 2s
