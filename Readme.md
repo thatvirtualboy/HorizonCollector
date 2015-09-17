@@ -1,6 +1,7 @@
 ## Horizon Collector for Mac by Ryan Klumph
 ### Please report any issues to Ryan on Twitter ([@thatvirtualboy](http://twitter.com/thatvirtualboy))
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/13758243/9935120/1c728dd8-5d12-11e5-920a-ec2c0416481c.png" height="150" width="150"></p>
 
 This script gathers Horizon View Client logs and has the ability to upload them to VMware Support. To run the script:
 
