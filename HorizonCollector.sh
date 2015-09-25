@@ -155,7 +155,7 @@ launchctl setenv VMW_RDPVC_BRIDGE_LOG_ENABLED "1"
 
 mkdir -p "$HOME/Library/Preferences/VMware Horizon View"
 echo "loglevel.user.cui = \"9\"" > "$HOME/Library/Preferences/VMware Horizon View/config"
-echo "loglevel.user.syncWaitQ = \"10\"" > "$HOME/Library/Preferences/VMware Horizon View/config"
+echo "loglevel.user.syncWaitQ = \"10\"" >> "$HOME/Library/Preferences/VMware Horizon View/config"
 echo "loglevel.user.dui = \"10\"" >> "$HOME/Library/Preferences/VMware Horizon View/config"
 echo "loglevel.user.duiMKS = \"10\"" >> "$HOME/Library/Preferences/VMware Horizon View/config"
 echo "loglevel.user.gui = \"10\"" >> "$HOME/Library/Preferences/VMware Horizon View/config"
