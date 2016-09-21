@@ -21,13 +21,15 @@ This script gathers Horizon View Client logs and has the ability to upload them 
 
 ### Changelog
 
-v1.4 - Added ability to enable and collect full DEBUG logging
+v1.0.1 - Includes additional USB Services logging. Cleaned up some wording in the collection.
 
-v1.3 - Cleaned up ThinPrint logic, pulls ThinPrint versioning, and added sudo check 
+v1.0.0.4 - Added ability to enable and collect full DEBUG logging
 
-v1.2 - Added ThinPrint logging by enabling debug CUPS logging / Better script documentation
+v1.0.0.3 - Cleaned up ThinPrint logic, pulls ThinPrint versioning, and added sudo check 
 
-v1.1 - Added FTP functionality. Script prompts to upload to VMware Support Request
+v1.0.0.2 - Added ThinPrint logging by enabling debug CUPS logging / Better script documentation
+
+v1.0.0.1 - Added FTP functionality. Script prompts to upload to VMware Support Request
 
 v1.0 - Gathers logs and zips to directory on desktop
 

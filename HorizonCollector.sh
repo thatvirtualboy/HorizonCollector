@@ -55,7 +55,7 @@ done
 }
 
 collectlogs(){
-echo "Collecting Horizon View Logs..."
+echo "Collecting Horizon Client Logs..."
 sleep 2s
 
 # Check if root
@@ -67,8 +67,8 @@ fi
 thinprint
 
 # Set zipfile variable
-zipfile=vmware-logs-`date +%Y-%m-%d_%I.%M.%S_%p_%Z`.zip
-zip -r9 ~/Desktop/$zipfile /var/log/cups/* /.thnuclnt/*.log ~/Library/Caches/vmware-view-thinprint/thnuclnt ~/Library/Logs/VMware* ~/Library/Preferences/ByHost/com.microsoft.rdc.*.plist ~/Library/Preferences/com.microsoft.rdc.plist /Library/Logs/VMware* --exclude=*fusion -x=*Fusion* &> /dev/null
+zipfile=horizon-client-logs-`date +%Y-%m-%d_%I.%M.%S_%p_%Z`.zip
+zip -r9 ~/Desktop/$zipfile /var/log/cups/* /.thnuclnt/*.log /var/root/Library/Logs/VMware/*.log ~/Library/Caches/vmware-view-thinprint/thnuclnt ~/Library/Logs/VMware* ~/Library/Preferences/ByHost/com.microsoft.rdc.*.plist ~/Library/Preferences/com.microsoft.rdc.plist /Library/Logs/VMware* --exclude=*fusion -x=*Fusion* &> /dev/null
 
 # Disable debug print logging
 cupsctl --no-debug-logging
@@ -99,7 +99,7 @@ done
 }
 
 collectlogsdb(){
-echo "Collecting Horizon View DEBUG Logs..."
+echo "Collecting Horizon Client DEBUG Logs..."
 sleep 2s
 
 # Check if root
